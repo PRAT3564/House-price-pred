@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>House Price Prediction</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: darkblue;
+    margin-bottom: 30px;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: darkblue;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    background-color: darkblue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #286090;
+}
+
+h2 {
+    color: darkblue;
+}
+
+p {
+    color: darkblue;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+    </style>    
+</head>
+
+<body>
+    <div class="container">
+        <h1>House Price Prediction</h1>
+        <form method="POST" action="/">
+            <label for="total_sqft">Total Sqft:</label>
+            <input type="number" step="any" name="total_sqft" required>
+            <br><br>
+            <label for="bath">Number of Bathrooms:</label>
+            <input type="number" step="any" name="bath" required>
+            <br><br>
+            <label for="bhk">Number of Bedrooms:</label>
+            <input type="number" step="any" name="bhk" required>
+            <br><br>
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if predicted_price %}
+        <div class="result">
+            <h2>Predicted House Price:</h2>
+            <p>{{ predicted_price }}</p>
+            <p>for {{ total_sqft }} sqft, {{ bath }} bathrooms, and {{ bhk }} bedrooms.</p>
+        </div>
+        {% endif %}
+
+        {% if error_message %}
+        <div class="result">
+            <h2>Error:</h2>
+            <p>{{ error_message }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
+
